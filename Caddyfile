@@ -1,0 +1,19 @@
+frank.sammarcum.ga:443 {
+    # The negotiation endpoint is also proxied to Rocket
+    proxy /notifications/hub/negotiate 172.21.121.15:8880 {
+        transparent
+    }
+    
+    # Notifications redirected to the websockets server
+    proxy /notifications/hub 172.21.121.15:3012 {
+        websocket
+    }
+    
+    # Proxy the Root directory to Rocket
+    proxy / 172.21.121.15:8880 {
+        transparent
+    }
+
+    tls ${SSLCERTIFICATE} ${SSLKEY}
+    # or 'tls self_signed' to generate a self-signed certificate
+}
