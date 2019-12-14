@@ -1,7 +1,20 @@
-0.0.0.0
+bw.7ptu.tk {
+    # The negotiation endpoint is also proxied to Rocket
+    proxy /notifications/hub/negotiate 172.21.121.15:8880 {
+        transparent
+    }
+    
+    # Notifications redirected to the websockets server
+    proxy /notifications/hub 172.21.121.15:3012 {
+        websocket
+    }
+    
+    # Proxy the Root directory to Rocket
+    proxy / 172.21.121.15:8880 {
+        transparent
+    }
 
-browse
-
-log stdout
-
-errors stdout
+    tls { 
+        dns cloudflare 
+    }
+}
