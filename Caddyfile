@@ -1,4 +1,4 @@
-frank.sammarcum.ga:443 {
+bw.samus.7ptu.tk:443 {
     # The negotiation endpoint is also proxied to Rocket
     proxy /notifications/hub/negotiate 172.21.121.15:8880 {
         transparent
